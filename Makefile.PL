@@ -109,8 +109,8 @@ sub parse_constants {
         my %constants = %{$constants};
         print "Found header in $filename\n";
         my @syms;
+        # cpp doesn't appear to be working on OS X
         my $has_cpp = 0;
-        open(H_IN, "-|", "cpp", $filename) and $has_cpp++;
         unless ($has_cpp) {
             warn "No working cpp ($!).  Parsing $filename in Perl";
             open(H_IN, "<", $filename) or die("Can't open $filename, because: ".$!);

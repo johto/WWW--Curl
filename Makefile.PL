@@ -123,6 +123,7 @@ sub parse_constants {
                 s/^(CURL[A-Za-z0-9_]*_) ([A-Za-z0-9_])/$1$2/;  # Strip intervening space from ISO CPP macro
                 s/[,\s].*//;
                 s/=.*$//;
+                s/^CURLOPT\(//;
                 next unless /^\w+$/;
                 push @syms, $_;
             }
@@ -144,7 +145,10 @@ sub parse_constants {
                 $e =~ /_LASTENTRY$/ ||
                 $e eq 'CURL_DID_MEMORY_FUNC_TYPEDEFS' ||
                 $e eq 'CURLINC_CURL_H' ||
+                $e eq 'CURLINC_MULTI_H' ||
                 $e eq 'CURL_STRICTER' ||
+                $e eq 'CURL_WIN32' ||
+                $e eq 'CURLOPT' ||
                 0
             ) {
                 next;

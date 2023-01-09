@@ -140,6 +140,8 @@ sub parse_constants {
         for my $e (sort @syms) {
             if (
                 $e =~ /OBSOLETE/ ||
+                $e =~ /DEPRECATED/ ||
+                $e eq 'CURL_IGNORE_DEPRECATION' ||
                 $e =~ /^CURL_EXTERN/ ||
                 $e =~ /_LAST$/ ||
                 $e =~ /_LASTENTRY$/ ||
